@@ -11,6 +11,12 @@ app.use(express.json());
 
 app.listen(port);
 
+
+$(document).ready(function() {        
+$('.carousel').carousel()
+});
+ 
+
 //@TODO Delete below after you verify the the app is working
 app.route('/').get(function(request, response) {
     response.json(config);
