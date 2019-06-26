@@ -1,34 +1,56 @@
-require("dotenv").config();
+require('dotenv').config();
 
-var express = require("express");
+var express = require('express');
+var exphbs = require("express-handlebars");
+var createError = require('http-errors');
 var app = express();
 var port = process.env.PORT || 9000;
 var connection = require("./config/connection")
 
 
-
-app.use(express.static(__dirname + "/views")); // you should change this to be wherever your html files are
-app.use(express.urlencoded({extended: true}));
-app.use(express.json());
-
-var exphbs = require("express-handlebars");
-
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-// var routes = require("./controllers/[[route_filename_here]]");
+// Route Setup
+var indexLanding = require('./routes/landing');
+var indexHome = require('./routes/home');
+var usersRouter = require('./routes/users');
+var usersFavorites = require('./routes/favorites');
 
-// app.use(routes);
 
-app.listen(port, function () {
+// you should change this to be wherever your html files are
+app.use(express.static(__dirname + '/views')); 
+app.use(express.urlencoded({extended: true}));
+app.use(express.json());
 
-<<<<<<< Updated upstream
-    console.log("Server listening on: http://localhost:" + port);
-});
 
-=======
-//@TODO Delete below after you verify the the app is working
-app.route('/').get(function(request, response) {
-    response.json(config);
-});
->>>>>>> Stashed changes
+// Route Paths
+app.use('/', indexLanding);
+app.use('/home', indexHome);
+app.use('/users', usersRouter);
+app.use('/favorites', usersFavorites);
+
+// app.listen(port);
+
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+    next(createError(404));
+  });
+  
+  // error handler
+  app.use(function(err, req, res, next) {
+    // set locals, only providing error in development
+    res.locals.message = err.message;
+    res.locals.error = req.app.get('env') === 'development' ? err : {};
+  
+    // render the error page
+    res.status(err.status || 500);
+    res.render('error');
+  });
+  
+  module.exports = app;
+
+  app.listen(port, function () {
+
+
