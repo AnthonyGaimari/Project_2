@@ -22,6 +22,13 @@ app.set("view engine", "handlebars");
 
 app.listen(port, function () {
 
+<<<<<<< Updated upstream
     console.log("Server listening on: http://localhost:" + port);
 });
 
+=======
+//@TODO Delete below after you verify the the app is working
+app.route('/').get(function(request, response) {
+    response.json(config);
+});
+>>>>>>> Stashed changes
