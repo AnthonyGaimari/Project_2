@@ -1,23 +1,27 @@
-require('dotenv').config();
+require("dotenv").config();
 
-var express = require('express');
+var express = require("express");
 var app = express();
 var port = process.env.PORT || 9000;
-var config = require('./config/config');
+var connection = require("./config/connection")
 
-app.use(express.static(__dirname + '/views')); // you should change this to be wherever your html files are
+
+
+app.use(express.static(__dirname + "/views")); // you should change this to be wherever your html files are
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 
-app.listen(port);
+var exphbs = require("express-handlebars");
 
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
 
-$(document).ready(function() {        
-$('.carousel').carousel()
+// var routes = require("./controllers/[[route_filename_here]]");
+
+// app.use(routes);
+
+app.listen(port, function () {
+
+    console.log("Server listening on: http://localhost:" + port);
 });
- 
 
-//@TODO Delete below after you verify the the app is working
-app.route('/').get(function(request, response) {
-    response.json(config);
-});

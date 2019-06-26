@@ -1,12 +1,14 @@
 let config = {
    local:{
-       mySql:{
-           url: process.env.DB_URL
+       mysql:{
+        url: process.env.DB_URL
        },
        apiKeys:{}
    },
    prod: {
-       mysql:{},
+       mysql:{
+        url: process.env.JAWSDB_URL
+       },
        apiKeys:{}
    }
 };
