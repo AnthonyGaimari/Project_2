@@ -1,51 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="./css/style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="index.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-
-
-    <title>Doggy Adoption</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css">
+<link rel="stylesheet" href="style.css">
+<title>Title</title>
 </head>
 <body>
-  <style>
-    body {
-    background-image: url("https://i.pinimg.com/originals/f2/58/ba/f258ba6c88ce1a2fac1bbaa441c369a4.jpg");
-    }
-    </style>
-
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">Adopt-A-Dog</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <ul class="navbar-nav">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Create</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">View Dogs</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Favorites</a>
-              </li>
-          </ul>
-        </div>
-      </nav>
-<br>
-
+<div class="container">
         <div class="carousel">
                 <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
                   <ol class="carousel-indicators">
@@ -62,7 +27,7 @@
                       </div>
                     </div>
                     <div class="carousel-item">
-                      <img src="https://www.bhgre.com/bhgrelife/wp-content/uploads/2017/04/shutterstock_612104651-1764x700_c.jpg" class="d-block w-100" alt="...">
+                      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSR0Bj0dl8Htm5X2VRB-jhJw3VZ6vLGspxkiF9ogruZKfH3wKPQzw" class="d-block w-100" alt="...">
                       <div class="carousel-caption d-none d-md-block">
                         <h5>Second slide label</h5>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
@@ -101,10 +66,9 @@
               
                   <label for="email"><b>Email</b></label>
                   <input type="text" placeholder="Enter Email" name="email" required>
-
+              
                   <label for="username"><b>Username</b></label>
-                  <input type="text" placeholder="Enter Username" name="username" required>
-            
+                  <input type="username" placeholder="Enter Username" name="username" required>
               
                   <label for="psw"><b>Password</b></label>
                   <input type="password" placeholder="Enter Password" name="password" required>
@@ -113,14 +77,12 @@
                     <input type="checkbox" checked="checked" name="remember" style="margin-bottom:15px"> Remember me
                   </label>
               
-                  <!-- <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p> -->
+                  <p>By creating an account you agree to our <a href="#" style="color:dodgerblue">Terms & Privacy</a>.</p>
               
                   <div class="clearfix">
-                  
-                    
-                    <button type="submit" class="button">Sign Up</button>
+                    <button type="button" class="cancelbtn">Cancel</button>
+                    <button type="submit" class="signupbtn">Sign Up</button>
                   </div>
-
               </form>
       </div>
       
@@ -145,42 +107,24 @@
                 </label>
       
             <div class="clearfix">
-                <button type="submit" class = "button">Login</button>
+              <div class="container" style="background-color:#f1f1f1">
+                <button type="submit">Login</button>
+                <button type="button" class="cancelbtn">Cancel</button>
                 </div>
-             
+              </div>
             </form>
-          </div>
         </div>
 
   </div>
   
  
 </div>
+</div>
 
-  
 
-                  <style>
-                      .footer {
-                        position: fixed;
-                        opacity: 0.8;
-                        height: 1.5em;
-                        left: 0;
-                        bottom: 0;
-                        width: 100%;
-                        background-color: black;
-                        color: whitesmoke;
-                        text-align: center;
-                        font-size: 12px;
-                      }
-                    </style>
-                  
-                    <div class="footer">
-                      <p>Copyright ©</p>
-                    </div>
-                  
-             
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </body>
 </html>
