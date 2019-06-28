@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="./css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="index.js"></script>
+    <script type="text/javascript" src="index.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
@@ -32,13 +32,13 @@
             <li class="nav-item active">
               <a class="nav-link" href="#">Home<span class="sr-only">(current)</span></a>
             </li>
-            <li class="nav-item">
+            <li class="navlist">
               <a class="nav-link" href="#">Create</a>
             </li>
-            <li class="nav-item">
+            <li class="navlist">
               <a class="nav-link" href="#">View Dogs</a>
             </li>
-            <li class="nav-item">
+            <li class="navlist">
                 <a class="nav-link" href="#">Favorites</a>
               </li>
           </ul>
@@ -94,7 +94,7 @@
   <div class="row">
       <div class="container-signup col-md-6">
 
-          <form class="form-signup" action="action_page.php" style="border:1px solid black">
+          <form class="form-signup" action="action_page.php" method="post" style="border:1px solid black">
                   <h1>Sign Up</h1>
                   <p>Please fill in this form to create an account.</p>
                   <hr>
@@ -118,14 +118,14 @@
                   <div class="clearfix">
                   
                     
-                    <button type="submit" class="button">Sign Up</button>
+                    <button type="submit" class="signup-button">Sign Up</button>
                   </div>
 
               </form>
       </div>
       
         <div class="container-signin col-md-6">
-          <form class="form-signin" action="action_page.php">
+          <form class="form-signin" action="action_page.php" method="post">
               <!-- <div class="imgcontainer">
                 <img src="img_avatar2.png" alt="Avatar" class="avatar">
               </div> -->
@@ -145,7 +145,7 @@
                 </label>
       
             <div class="clearfix">
-                <button type="submit" class = "button">Login</button>
+                <button type="submit" class="login-button">Login</button>
                 </div>
              
             </form>
