@@ -1,8 +1,9 @@
-
+var callAllDogs = require("./callAllDogs.js");
 
 $(document).ready(function () {
     $('.carousel').carousel()
     allDogs();
+    callAllDogs();
 });
 
 // $('.button').on('click', function () {
@@ -26,9 +27,6 @@ function allDogs() {
 
 };
 
-// function showNav() {
-//     $('.navlist').show();
-// };
 
 
 
