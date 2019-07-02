@@ -9,7 +9,7 @@ var connection = require("./config/connection");
 
 
 
-var routes = require('./controllers/dogs');
+var routes = require('./controllers/routes');
 app.use('/', routes);
 
 

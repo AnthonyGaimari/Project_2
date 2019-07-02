@@ -10,11 +10,11 @@ var user = {
         };
         orm.insert(query, callback);
     },
-    userByUsername: function(username, callback){
-
+    userByUsername: function(loginAttempt, callback){
+        console.log(loginAttempt)
         let query = {
             table: 'users',
-            where: [{username: username.toLowerCase()}],
+            where: [{username: loginAttempt.username}],
             debug: true
         };
         orm.select(query, callback);
