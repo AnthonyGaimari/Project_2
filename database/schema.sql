@@ -7,8 +7,9 @@ CREATE TABLE users
 user_id int(11) AUTO_INCREMENT,
 username varchar(256) UNIQUE,
 user_email varchar(256) UNIQUE,
+createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 primary key (user_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
 
 CREATE TABLE dogs
 (
@@ -19,13 +20,15 @@ dog_age int(3),
 dog_img_url varchar (256),
 dog_blurb text,
 is_adopted boolean default false,
+createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 primary key (dog_id)
-)ENGINE=InnoDB DEFAULT CHARSET=utf8;
+)
 
 CREATE TABLE favorites(
 fav_id int(11) NOT NULL AUTO_INCREMENT PRIMARY KEY,
 dog_id int(11),
 user_id int(11),
+createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 KEY dog_id (dog_id),
 CONSTRAINT dog_id FOREIGN KEY (dog_id) REFERENCES dogs (dog_id) ON DELETE CASCADE ON UPDATE CASCADE,
 KEY user_id (user_id),
