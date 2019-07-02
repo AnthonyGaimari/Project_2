@@ -4,15 +4,15 @@ USE adoption_org;
 
 CREATE TABLE users
 (
-user_id int(11),
-username varchar(256),
-user_email varchar(256),
+user_id int(11) AUTO_INCREMENT,
+username varchar(256) UNIQUE,
+user_email varchar(256) UNIQUE,
 primary key (user_id)
 )ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 CREATE TABLE dogs
 (
-dog_id int(11),
+dog_id int(11) AUTO_INCREMENT,
 dog_name varchar(256),
 dog_breed varchar(256),
 dog_age int(3),

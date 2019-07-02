@@ -57,7 +57,15 @@ let orm = {
         connection.query(queryString, queryArray, function(error, result) {
             callback(error, result);
         });
+    },
+
+    getUserFavorites: function(currUser_Id, callback){
+        let queryString = "Select dogs.dog_id, dog_name, dog_age, dog_breed from dogs left join favorites on dogs.dog_id = favorites.dog_id where favorites.user_id =" + currUser_Id
+        connection.query(queryString, function(error, result) {
+            callback(error, result);
+        });
     }
+  
 };
 
 module.exports = orm;

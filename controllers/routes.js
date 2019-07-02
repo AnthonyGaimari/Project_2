@@ -5,6 +5,7 @@ var express = require('express');
 var router = express.Router();
 var dog = require('../models/dog');
 var user = require('../models/user');
+var favorites = require('../models/favorites');
 
 var orm = require('../config/orm');
 
@@ -26,7 +27,7 @@ router.get('/api/dogs/:id', function (req, res) {
 //Add a new dog
 router.post('/api/dogs', function (req, res) {
     var newDog = {
-    //Place Holder Dog // to be deleted
+        //Place Holder Dog // to be deleted
         dog_name: "Dog1",
         dog_breed: "Shib",
         dog_age: 5,
@@ -46,7 +47,7 @@ router.post('/api/dogs', function (req, res) {
 
 router.post('/api/users', function (req, res) {
     var newUser = {
-    //Place Holder User // to be deleted
+        //Place Holder User // to be deleted
         user_id: 1,
         username: "Nick",
         user_email: "nick@gamblin.com"
@@ -66,12 +67,25 @@ router.post('/api/user/login', function (req, res) {
     var username = "Nickolas"
     var password = "p#ssword"
     user.userByUsername(username, function (error, user_data) {
-    user_data = user_data[0];
-    if (user_data.password === password){
-        res.status(200)
-    } else
-        res.status(400).json({'error': 'Incorrect username or password'});       
+        user_data = user_data[0];
+        if (user_data.password === password) {
+            res.status(200)
+        } else
+            res.status(400).json({ 'error': 'Incorrect username or password' });
     })
 
 });
+
+router.post('/api/user/favorites', function (req, res) {
+    var currUser_id = 3;
+    favorites.getUserFavorites(currUser_id, function (error, favorites_data) {
+        if (error) {
+            res.json(error)
+        } else {
+            res.json(favorites_data);
+        }
+    })
+});
+
+
 module.exports = router;

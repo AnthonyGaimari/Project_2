@@ -1,9 +1,9 @@
-var callAllDogs = require("./callAllDogs.js");
+// var callAllDogs = require("./callAllDogs.js");
 
 $(document).ready(function () {
     $('.carousel').carousel()
     allDogs();
-    callAllDogs();
+    // callAllDogs();
 });
 
 // $('.button').on('click', function () {
@@ -15,7 +15,7 @@ function allDogs() {
     $(".login-button").on("click", function (event) {
         event.preventDefault()
         console.log("hello");
-        $('.navlist').show();
+        // $('.navlist').show();
         // $.ajax({
         //     type: "POST",
         //     url: url,
