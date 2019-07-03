@@ -9,8 +9,8 @@ var connection = require("./config/connection");
 
 
 
-var routes = require('./controllers/routes');
-app.use('/', routes);
+// var routes = require('./controllers/routes');
+// app.use('/', routes);
 
 
 
@@ -23,6 +23,8 @@ app.get('/',function(req,res) {
   res.sendFile('index.html');
  });
 
+ var routes = require('./controllers/routes');
+app.use('/', routes);
 
 
   app.listen(port, function () {
