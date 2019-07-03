@@ -2,6 +2,17 @@
 
 body {
     margin: 60px;
+
+}
+
+
+.view-container{
+
+  display: block;
+}
+
+.view-container.hidden {
+  display: none;
 }
 
 /* Full-width input fields */
@@ -58,6 +69,19 @@ button:hover {
   opacity:0.5;
 }
 
+
+.footer {
+  position: fixed;
+  opacity: 0.8;
+  height: 1.5em;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: black;
+  color: whitesmoke;
+  text-align: center;
+  font-size: 12px;
+}
 
 /* Add padding to container elements */
 .container {
@@ -131,3 +155,5 @@ form {
       width: 100%;
     }
   }
+
+  

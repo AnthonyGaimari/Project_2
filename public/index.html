@@ -28,7 +28,7 @@
     }
   </style>
 
-
+<div class="app-container">
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Adopt-A-Dog</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -44,17 +44,19 @@
           <a class="nav-link" href="#">Create</a>
         </li>
         <li class="navlist">
-          <a class="nav-link" href="#">View Dogs</a>
+          <a class="nav-link" id="view-dogs" href="#">View Dogs</a>
         </li>
         <li class="navlist">
-          <a class="nav-link" href="#">Favorites</a>
+          <a class="nav-link" href="#"  id="favorites">Favorites</a>
         </li>
       </ul>
     </div>
   </nav>
   <br>
-
-  <div id="big-container">
+<!-- Content  -->
+<div id="content">
+<!-- Container for login state -->
+  <div id="login-state-container" class="view-container" >
 
     <div class="carousel">
       <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
@@ -162,32 +164,48 @@
 
 
   </div>
+  <!--   End login state   -->
+
+  <div id="allDogs-state-container" class="view-container hidden">
+
+<h1>HI ALL DOGS VIEW</h1>
+
+
+  </div>
+
+<!-- Favorites -->
+
+  <div id="favorites-state-container" class="view-container hidden">
+
+    <h1>Favorites HI ALL DOGS VIEW</h1>
+    
+    
+      </div>
+    
 
 
 
 
 
 
-  <style>
-    .footer {
-      position: fixed;
-      opacity: 0.8;
-      height: 1.5em;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: black;
-      color: whitesmoke;
-      text-align: center;
-      font-size: 12px;
-    }
-  </style>
+</div>
+
+
+  
+</div>
+
+
+
+
+
+
+ 
 
   <div class="footer">
     <p>Copyright ©</p>
   </div>
 
-  <script type="text/javascript" src="indexTest.js"></script>
+  <!-- <script type="text/javascript" src="indexTest.js"></script> -->
   <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
     crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>
