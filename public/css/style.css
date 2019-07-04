@@ -29,14 +29,10 @@ body {
     display:none;
 } */
 
-.form-signup {
-    background-color: white;
-    opacity: 0.8;
-    
-}
 
 
-.form-signin {
+
+.form{
     background-color: white;
     opacity: 0.8;
 }
