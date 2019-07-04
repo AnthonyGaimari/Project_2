@@ -6,7 +6,7 @@ var router = express.Router();
 var dog = require('../models/dog');
 var user = require('../models/user');
 var favorites = require('../models/favorites');
-var orm = require('../config/orm');
+// var orm = require('../config/orm');
 
 //Get all dogs
 router.get('/api/dogs', function (req, res) {
@@ -26,24 +26,8 @@ router.get('/api/dogs/:id', function (req, res) {
 //Add a new dog
 router.post('/api/dogs', function (req, res) {
     console.log(req.body)
-    newDog = req.body;
-    // newDog = {
-    //     dog_name: req.body.dog_name,
-    //     dog_breed: req.body.dog_breed,
-    //     dog_age: 5,
-    //     dog_img_url: req.body.dog_img_url,
-    //     dog_blurb: req.body.dog_blurb
-    // }
-
-
-    // Place Holder Dog // to be deleted 
-    // var newDog = {
-    //     dog_name: "Dog1",
-    //     dog_breed: "Shib",
-    //     dog_age: 5,
-    //     dog_img_url: "www.google.com",
-    //     dog_blurb: "Goodest Boi"
-    // }
+    var newDog = req.body;
+  
     dog.insertDog(newDog, function (error, dog_data) {
         if (error) {
             res.json(error)
@@ -56,11 +40,14 @@ router.post('/api/dogs', function (req, res) {
 //USERS
 
 router.post('/api/users', function (req, res) {
-    var newUser = {
-        //Place Holder User // to be deleted
-        username: "Nick",
-        user_email: "nick@gamblin.com"
-    }
+    // var newUser = {
+    //     //Place Holder User // to be deleted
+    //     username: "Nick",
+    //     user_email: "nick@gamblin.com"
+    // }
+    console.log(req.body)
+    var newUser = req.body;
+
     user.insertUser(newUser, function (error, user_data) {
         if (error) {
             res.json(error)
@@ -69,23 +56,28 @@ router.post('/api/users', function (req, res) {
         }
     })
 });
- 
-router.post('/api/user/login', function (req, res) {
-    // var username = req.body.username
-    // var password = req.body.password
 
-    var loginAttempt = {
-        username: 'Nick',
-        password: 'password',
-      }
-    console.log(loginAttempt)
-    user.userByUsername(loginAttempt, function (error, user_data) {
-        console.log(user_data)
-        user = user_data[0];
-        if (user.password === loginAttempt.password) {
-            res.status(200)
-        } else
-            res.status(400).json({ 'error': 'Incorrect username or password' });
+router.post('/api/user/login', function (req, res) {
+
+// console.log("________req.body__________")
+// console.log(req.body);
+//  console.log(req.body.username);
+ var username = req.body.username
+    user.userByUsername(username, function (error, user_data) {
+        // console.log(user_data)
+        var user = user_data[0];
+        console.log(req.body.password)
+        if (typeof user !== 'undefined') {
+            if (user.password === req.body.password){
+                res.status(200).json({ 'message': 'All good' });
+            } else {
+                res.status(400).json({ 'error': 'Incorrect username or password' });
+            }
+        
+        } else {
+            res.status(404).json({'error': 'user not found'});
+        }
+
     })
 
 

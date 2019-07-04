@@ -8,26 +8,20 @@ var port = process.env.PORT || 9000;
 var connection = require("./config/connection");
 
 
-
-// var routes = require('./controllers/routes');
-// app.use('/', routes);
-
-
-
-// you should change this to be wherever your html files are
-app.use(express.static(__dirname + '/public')); 
-app.use(express.urlencoded({extended: true}));
+app.use(express.static(__dirname + '/public'));
+app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
-app.get('/',function(req,res) {
-  res.sendFile('index.html');
- });
 
- var routes = require('./controllers/routes');
+app.get('/', function (req, res) {
+  res.sendFile('index.html');
+});
+
+var routes = require('./controllers/routes');
 app.use('/', routes);
 
 
-  app.listen(port, function () {
+app.listen(port, function () {
 
-    console.log("Server listening on: http://localhost:" + port);
+  console.log("Server listening on: http://localhost:" + port);
 });
