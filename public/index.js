@@ -187,7 +187,7 @@ function signUp(newUser) {
 function userLogin(loginAttempt) {
     console.log("FROM USERLOGIN FUNCTION: ")
     console.log(loginAttempt)
-    $.ajax({ url: "/user/login", data: loginAttempt, method: "POST" })
+    $.ajax({ url: "/api/user/login", data: loginAttempt, method: "POST" })
         .then(function (response) {
             console.log("running");
             console.log(response);
