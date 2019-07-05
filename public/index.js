@@ -144,7 +144,7 @@ function showAllDogs() {
     $('#allDogs').css('display', 'block')
 
     $("#allDogs-state-container").empty().prepend("<div class='card-deck'></div>");
-    $.ajax({ url: "http://localhost:9000/api/dogs/", method: "GET" })
+    $.ajax({ url: "/api/dogs/", method: "GET" })
         .then(function (response) {
             console.log("running");
             console.log(response);
@@ -161,7 +161,7 @@ function showAllDogs() {
 function submitDog(newDog) {
     console.log("FROM SUBMIT DOG FUNCTION: ")
     console.log(newDog)
-    $.ajax({ url: "http://localhost:9000/api/dogs/", data: newDog, method: "POST" })
+    $.ajax({ url: "/api/dogs/", data: newDog, method: "POST" })
         .then(function (response) {
             console.log("running");
             console.log(response);
@@ -175,7 +175,7 @@ function submitDog(newDog) {
 function signUp(newUser) {
     console.log("FROM SUBMIT USER FUNCTION: ")
     console.log(newUser)
-    $.ajax({ url: "http://localhost:9000/api/users/", data: newUser, method: "POST" })
+    $.ajax({ url: "/api/users/", data: newUser, method: "POST" })
         .then(function (response) {
             console.log("running");
             console.log(response);
@@ -187,7 +187,7 @@ function signUp(newUser) {
 function userLogin(loginAttempt) {
     console.log("FROM USERLOGIN FUNCTION: ")
     console.log(loginAttempt)
-    $.ajax({ url: "http://localhost:9000/api/user/login", data: loginAttempt, method: "POST" })
+    $.ajax({ url: "/api/user/login", data: loginAttempt, method: "POST" })
         .then(function (response) {
             console.log("running");
             console.log(response);
@@ -209,7 +209,7 @@ function userLogin(loginAttempt) {
 function showFavorties(loggedInUser){
     console.log("FROM SHOW FAVORITES FUNCTION: ")
     console.log(loggedInUser)
-    $.ajax({ url: "http://localhost:9000/api/user/favorites/" + loggedInUser,  method: "GET" })
+    $.ajax({ url: "/api/user/favorites/" + loggedInUser,  method: "GET" })
         .then(function (response) {
             console.log("running");
             console.log(response);
