@@ -143,15 +143,15 @@ function showAllDogs() {
     // $('#content').empty();
     $('#allDogs').css('display', 'block')
 
-    $("#allDogs-state-container").empty().prepend("<div class='card-deck'></div>");
+    $("#allDogs-state-container").empty().prepend("<div class='row'></div>");
     $.ajax({ url: "/api/dogs/", method: "GET" })
         .then(function (response) {
             console.log("running");
             console.log(response);
             for (var i = 0; i < response.length; i++) {
-                // console.log(response[i].dog_id)
-                // console.log(response[i].dog_name)
-                $(".card-deck").append("<div class='card'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div>");
+                console.log(response[i].dog_id) 
+                console.log(response[i].dog_name)
+                $(".row").append("<div class='col-auto mb-3 mr-3'><div class='card' style='background-color:#28a745; width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div> </div>");
             }
 
         });
