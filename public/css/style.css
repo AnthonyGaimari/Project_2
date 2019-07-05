@@ -15,6 +15,10 @@ body {
   display: none;
 }
 
+.navlist.hidden {
+  display: none;
+}
+
 /* Full-width input fields */
   input[type=text], input[type=password] {
   width: 100%;
