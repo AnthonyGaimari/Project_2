@@ -104,12 +104,16 @@ $(document).ready(function () {
 function router(id) {
     if (id === 'login') {
         // console.log('here')
+        $('.navlist').addClass('hidden');
+        $('.view-container').addClass('hidden');
         showLogin()
     }
     else if (id === 'allDogs') {
         console.log('alldogs')
         $('.view-container').addClass('hidden');
         $('#allDogs-state-container').removeClass('hidden')
+        $('.navlist').removeClass('hidden')
+
         console.log(loggedInUser+" LOGGED IN")
         showAllDogs();
 
@@ -143,7 +147,7 @@ function showAllDogs() {
     // $('#content').empty();
     $('#allDogs').css('display', 'block')
 
-    $("#allDogs-state-container").empty().prepend("<div class='row'></div>");
+    $("#allDogs-state-container").empty().prepend("<div class='row dog-card'></div>");
     $.ajax({ url: "/api/dogs/", method: "GET" })
         .then(function (response) {
             console.log("running");
@@ -151,7 +155,7 @@ function showAllDogs() {
             for (var i = 0; i < response.length; i++) {
                 console.log(response[i].dog_id) 
                 console.log(response[i].dog_name)
-                $(".row").append("<div class='col-auto mb-3 mr-3'><div class='card' style='background-color:#28a745; width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div> </div>");
+                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div> </div>");
             }
 
         });
@@ -213,17 +217,14 @@ function showFavorties(loggedInUser){
         .then(function (response) {
             console.log("running");
             console.log(response);
-            $("#favorites-state-container").empty().prepend("<div class='row'></div>");
+      
+            $("#favorites-state-container").empty().prepend("<div class='row dog-card'></div>");
             for (var i = 0; i < response.length; i++) {
                 // console.log(response[i].dog_id)
                 // console.log(response[i].dog_name)
-                $(".row").append("<div class='col-auto mb-3 mr-3'><div class='card' style='background-color:#28a745; width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div> </div>");            }
-            // if (response.message === "All good") {
-            //     router('allDogs')
-            // } else{
-            //     console.log("wrong credentials")
+                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div> </div>");
+            }
 
-            // }
 
         });}
 
