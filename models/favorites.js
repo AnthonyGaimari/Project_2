@@ -11,8 +11,9 @@ var favorites = {
         orm.insert(query, callback);
     },
 
-    getUserFavorites: function (currUser_Id, callback){
-        orm.getUserFavorites(currUser_Id, callback);
+    getUserFavorites: function (user_id, callback){
+        console.log("Favorites Model: "+ user_id)
+        orm.getUserFavorites(user_id, callback);
     }
  
 };
