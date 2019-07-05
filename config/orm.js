@@ -59,11 +59,13 @@ let orm = {
         });
     },
 
-    getUserFavorites: function(currUser_Id, callback){
-        let queryString = "Select dogs.dog_id, dog_name, dog_age, dog_breed from dogs left join favorites on dogs.dog_id = favorites.dog_id where favorites.user_id =" + currUser_Id
-        connection.query(queryString, function(error, result) {
+    getUserFavorites: function(user_id, callback){
+        let queryString = "Select dogs.dog_id, dog_blurb, dog_img_url, dog_name, dog_age, dog_breed from dogs left join favorites on dogs.dog_id = favorites.dog_id where favorites.user_id = " + user_id
+        let statement = connection.query(queryString, function(error, result) {
             callback(error, result);
         });
+            console.log(statement.sql);
+        
     }
   
 };

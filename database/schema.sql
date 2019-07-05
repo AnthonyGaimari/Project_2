@@ -7,6 +7,7 @@ CREATE TABLE users
 user_id int(11) AUTO_INCREMENT,
 username varchar(256) UNIQUE,
 user_email varchar(256) UNIQUE,
+password varchar(24)
 createdAt TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 primary key (user_id)
 )

@@ -8,6 +8,8 @@ var user = require('../models/user');
 var favorites = require('../models/favorites');
 // var orm = require('../config/orm');
 
+//======DOG ROUTES=========================================================
+
 //Get all dogs
 router.get('/api/dogs', function (req, res) {
     dog.allGoodDogs(function (error, dog_data) {
@@ -37,7 +39,7 @@ router.post('/api/dogs', function (req, res) {
     })
 });
 
-//USERS
+//=====USER ROUTES=========================================================
 
 router.post('/api/users', function (req, res) {
     // var newUser = {
@@ -65,11 +67,14 @@ router.post('/api/user/login', function (req, res) {
  var username = req.body.username
     user.userByUsername(username, function (error, user_data) {
         // console.log(user_data)
+        // loggedInUser = user_data[0].user_id
         var user = user_data[0];
+        console.log("User Data:" +JSON.stringify(user_data[0]))
         console.log(req.body.password)
         if (typeof user !== 'undefined') {
             if (user.password === req.body.password){
-                res.status(200).json({ 'message': 'All good' });
+                res.status(200).json({ 'message': 'All good', 'currUser': user_data[0].user_id });
+            
             } else {
                 res.status(400).json({ 'error': 'Incorrect username or password' });
             }
@@ -81,11 +86,15 @@ router.post('/api/user/login', function (req, res) {
     })
 
 
+//=======FAVORITE ROUTES===================================================================
+
 });
 
-router.post('/api/user/favorites', function (req, res) {
-    var currUser_id = 3;
-    favorites.getUserFavorites(currUser_id, function (error, favorites_data) {
+router.get("/api/user/favorites/:currUser_id", function (req, res) {
+    var user_id = req.params.currUser_id
+    console.log("I'm in the favorites route: " + user_id)
+    console.log(user_id)
+    favorites.getUserFavorites(user_id, function (error, favorites_data) {
         if (error) {
             res.json(error)
         } else {

@@ -19,7 +19,7 @@
     crossorigin="anonymous"></script>
 
 
-  <title>Doggy Adoption</title>
+  <title>Friend of Dog</title>
 </head>
 
 <body>
@@ -31,7 +31,7 @@
 
   <div class="app-container">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">Adopt-A-Dog</a>
+      <a class="navbar-brand" href="#">Friend-of-Dog</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
         aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -45,11 +45,15 @@
             <a class="nav-link" href="#" id="dog_form">Submit for Adoption</a>
           </li>
           <li class="navlist">
-            <a class="nav-link" id="view-dogs" href="#">View Dogs</a>
+            <a class="nav-link" id="view_dogs" href="#">View Dogs</a>
           </li>
           <li class="navlist">
-            <a class="nav-link" href="#" id="favorites">Favorites</a>
+            <a class="nav-link" href="#" id="view_favorites">Favorites</a>
           </li>
+        </li>
+        <li class="navlist">
+          <a class="nav-link" href="#" id="logout">(LOGOUT)</a>
+        </li>
         </ul>
       </div>
     </nav>
@@ -117,7 +121,7 @@
                 <hr>
 
                 <label for="email"><b>Email</b></label>
-                <input type="text" id="new_user_email" placeholder="Enter Email" name="email" required>
+                <input type="text" id="new_user_email" placeholder="Email" name="email" required>
 
                 <label for="username"><b>Username</b></label>
                 <input type="text" id="new_username" placeholder="Enter Username" name="username" required>
@@ -147,7 +151,7 @@
                 <input type="text" id="login_password" placeholder="Enter Password" name="psw" required>
 
                 <div class="clearfix">
-                  <button type="button" id="login_button" class ="button" >Login</button>
+                  <button type="button" id="login_button" class="button">Login</button>
                 </div>
 
               </form>
@@ -187,16 +191,16 @@
                 <hr>
 
                 <label for="dogname"><b>Name</b></label>
-                <input type="text" id="dog_name" placeholder="Enter Dog Name" name="dogname" required>
+                <input type="text" id="dog_name" placeholder="Dog Name" name="dogname" required>
 
                 <label for="dogbreed"><b>Breed</b></label>
-                <input type="text" id="dog_breed" placeholder="Enter Breed" name="dogbreed" required>
+                <input type="text" id="dog_breed" placeholder="Breed" name="dogbreed" required>
 
                 <label for="dogage"><b>Age</b></label>
-                <input type="text" id="dog_age" placeholder="Enter Age" name="dogage" required>
+                <input type="text" id="dog_age" placeholder="Age" name="dogage" required>
 
                 <label for="dogimage"><b>Image</b></label>
-                <input type="text" id="dog_img_url" placeholder="Enter Breed" name="dogimage" required>
+                <input type="text" id="dog_img_url" placeholder="Image URL" name="dogimage" required>
 
                 <label for="dogblurb"><b>Blurb</b></label>
                 <input type="text" id="dog_blurb" placeholder="Tell us about your dog" name="dogblurb" required>
@@ -218,10 +222,6 @@
 
 
 
-
-
-
-
       </div>
 
 
@@ -229,17 +229,10 @@
     </div>
 
 
-
-
-
-
-
-
     <div class="footer">
       <p>Copyright ©</p>
     </div>
 
-    <!-- <script type="text/javascript" src="indexTest.js"></script> -->
     <script src="https://code.jquery.com/jquery-3.4.1.js"
       integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.15.0/umd/popper.min.js"></script>

@@ -1,3 +1,5 @@
+var loggedInUser;
+
 $(document).ready(function () {
 
     // initRoutes();
@@ -9,9 +11,9 @@ $(document).ready(function () {
     router('login')
 
 
-    //On-click functions for the nav bar that change the "page state"
+    //========ON CLICK FUNCTIONS FOR NAVBAR===============================
 
-    $('#view-dogs').click(function (e) {
+    $('#view_dogs').click(function (e) {
         console.log('viewing dogs')
         e.stopImmediatePropagation()
         e.preventDefault();
@@ -20,7 +22,7 @@ $(document).ready(function () {
 
 
 
-    $('#favorites').click(function (e) {
+    $('#view_favorites').click(function (e) {
         e.stopImmediatePropagation()
         e.preventDefault();
         router("showFavorites")
@@ -38,6 +40,16 @@ $(document).ready(function () {
         router("submit_dog")
     })
 
+    $('#logout').click(function (e) {
+        e.stopImmediatePropagation()
+        e.preventDefault();
+        loggedInUser = undefined
+        console.log(loggedInUser)
+        router("login")
+
+    })
+
+//==========ON CLICK FOR ALL FORM BUTTONS================================
 
     $('#submit_dog').on('click', function (event) {
         event.stopImmediatePropagation()
@@ -98,14 +110,16 @@ function router(id) {
         console.log('alldogs')
         $('.view-container').addClass('hidden');
         $('#allDogs-state-container').removeClass('hidden')
+        console.log(loggedInUser+" LOGGED IN")
         showAllDogs();
 
     }
     else if (id === 'showFavorites') {
         $('.view-container').addClass('hidden');
         $('#favorites-state-container').removeClass('hidden')
-        // showFavorites();
-    }
+        var currUser_id = 3;
+        showFavorties(loggedInUser)
+        }
 
     else if (id === 'submit_dog') {
         $('.view-container').addClass('hidden');
@@ -114,27 +128,29 @@ function router(id) {
 }
 
 
-// ======================================================================================================
+// ==========FUNCTION FOR DEFAULT "PAGE STATE"=======================================
 
 function showLogin() {
     console.log('show login now')
     $('#login-state-container').removeClass("hidden");
 
-
 }
+
+//=========AJAX CALLS==============================================================
+
 
 function showAllDogs() {
     // $('#content').empty();
     $('#allDogs').css('display', 'block')
 
     $("#allDogs-state-container").empty().prepend("<div class='card-deck'></div>");
-    $.ajax({ url: "/api/dogs/", method: "GET" })
+    $.ajax({ url: "http://localhost:9000/api/dogs/", method: "GET" })
         .then(function (response) {
             console.log("running");
             console.log(response);
             for (var i = 0; i < response.length; i++) {
-                console.log(response[i].dog_id)
-                console.log(response[i].dog_name)
+                // console.log(response[i].dog_id)
+                // console.log(response[i].dog_name)
                 $(".card-deck").append("<div class='card'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div>");
             }
 
@@ -145,7 +161,7 @@ function showAllDogs() {
 function submitDog(newDog) {
     console.log("FROM SUBMIT DOG FUNCTION: ")
     console.log(newDog)
-    $.ajax({ url: "/api/dogs/", data: newDog, method: "POST" })
+    $.ajax({ url: "http://localhost:9000/api/dogs/", data: newDog, method: "POST" })
         .then(function (response) {
             console.log("running");
             console.log(response);
@@ -159,7 +175,7 @@ function submitDog(newDog) {
 function signUp(newUser) {
     console.log("FROM SUBMIT USER FUNCTION: ")
     console.log(newUser)
-    $.ajax({ url: "/api/users/", data: newUser, method: "POST" })
+    $.ajax({ url: "http://localhost:9000/api/users/", data: newUser, method: "POST" })
         .then(function (response) {
             console.log("running");
             console.log(response);
@@ -171,12 +187,13 @@ function signUp(newUser) {
 function userLogin(loginAttempt) {
     console.log("FROM USERLOGIN FUNCTION: ")
     console.log(loginAttempt)
-    $.ajax({ url: "/api/user/login", data: loginAttempt, method: "POST" })
+    $.ajax({ url: "http://localhost:9000/api/user/login", data: loginAttempt, method: "POST" })
         .then(function (response) {
             console.log("running");
             console.log(response);
-
             if (response.message === "All good") {
+                console.log(response.currUser)
+                loggedInUser = response.currUser
                 router('allDogs')
             } else{
                 console.log("wrong credentials")
@@ -184,7 +201,32 @@ function userLogin(loginAttempt) {
             }
 
         });
+
+        // return loggedInUser;
 }
+
+
+function showFavorties(loggedInUser){
+    console.log("FROM SHOW FAVORITES FUNCTION: ")
+    console.log(loggedInUser)
+    $.ajax({ url: "http://localhost:9000/api/user/favorites/" + loggedInUser,  method: "GET" })
+        .then(function (response) {
+            console.log("running");
+            console.log(response);
+            $("#favorites-state-container").empty().prepend("<div class='card-deck'></div>");
+            for (var i = 0; i < response.length; i++) {
+                // console.log(response[i].dog_id)
+                // console.log(response[i].dog_name)
+                $(".card-deck").append("<div class='card'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div>");
+            }
+            // if (response.message === "All good") {
+            //     router('allDogs')
+            // } else{
+            //     console.log("wrong credentials")
+
+            // }
+
+        });}
 
 
 
