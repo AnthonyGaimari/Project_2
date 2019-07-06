@@ -111,9 +111,9 @@ router.post('/api/favorites', function (req, res) {
     //     user_email: "nick@gamblin.com"
     // }
     console.log(req.body)
-    var new_favorites = req.body;
+    var new_favorite = req.body;
 
-    favorites.insertFavorite(new_favorites, function (error, favorite_data) {
+    favorites.insertFavorite(new_favorite, function (error, favorite_data) {
         if (error) {
             res.json(error)
         } else {
