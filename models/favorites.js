@@ -2,10 +2,10 @@ var orm = require('../config/orm')
 
 var favorites = {
 
-    insertFavorite: function (newFavorite, callback) {
+    insertFavorite: function (new_favorite, callback) {
         let query = {
             table: 'favorites',
-            data: newFavorite,
+            data: new_favorite,
             debug: true
         };
         orm.insert(query, callback);
