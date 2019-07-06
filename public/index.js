@@ -155,7 +155,7 @@ function showAllDogs() {
             for (var i = 0; i < response.length; i++) {
                 console.log(response[i].dog_id) 
                 console.log(response[i].dog_name)
-                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div> </div>");
+                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> <a href='#' class='btn btn-primary'>Favorties</a> </div> </div> </div>");
             }
 
         });
