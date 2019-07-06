@@ -104,4 +104,23 @@ router.get("/api/user/favorites/:currUser_id", function (req, res) {
 });
 
 
+router.post('/api/favorites', function (req, res) {
+    // var newUser = {
+    //     //Place Holder User // to be deleted
+    //     username: "Nick",
+    //     user_email: "nick@gamblin.com"
+    // }
+    console.log(req.body)
+    var new_favorite = req.body;
+
+    favorites.insertFavorite(new_favorite, function (error, favorite_data) {
+        if (error) {
+            res.json(error)
+        } else {
+            res.json(favorite_data);
+        }
+    })
+});
+
+
 module.exports = router;

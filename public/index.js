@@ -88,12 +88,32 @@ $(document).ready(function () {
 
         var loginAttempt = {
             username: $('#login_username').val(),
-            password: $('#login_password').val(),
+            password: $('#login_password').val()
         }
         console.log(loginAttempt)
         userLogin(loginAttempt);
     });
+
+
+    $("body").on('click', '.add_favorite', function(){
+        console.log('Add Favorite: '+ $(this).val());
+        var new_favorite = {
+            dog_id: $(this).val(),
+            user_id: loggedInUser
+        }
+        console.log(new_favorite)
+        addFavorite(new_favorite);
+    });
+
+    // $('.add_favorite').on('click', function (event) {
+    //     event.stopImmediatePropagation()
+    //     event.preventDefault()
+    //     console.log('Add Favorite');
+    //     console.log($('.fav_button').val())
+    // });
 });
+
+
 
 
 
@@ -121,7 +141,6 @@ function router(id) {
     else if (id === 'showFavorites') {
         $('.view-container').addClass('hidden');
         $('#favorites-state-container').removeClass('hidden')
-        var currUser_id = 3;
         showFavorties(loggedInUser)
         }
 
@@ -155,7 +174,7 @@ function showAllDogs() {
             for (var i = 0; i < response.length; i++) {
                 console.log(response[i].dog_id) 
                 console.log(response[i].dog_name)
-                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> <a href='#' class='btn btn-primary'>Favorties</a> </div> </div> </div>");
+                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> <button type='button'  class='button add_favorite' value ="+response[i].dog_id+">Add Favorite</button> </div> </div> </div>");
             }
 
         });
@@ -227,6 +246,19 @@ function showFavorties(loggedInUser){
 
 
         });}
+
+
+        function addFavorite(new_favorite) {
+            console.log("FROM ADD FAVORITE FUNCTION: ")
+            console.log(new_favorite)
+            $.ajax({ url: "/api/favorites/", data: new_favorite, method: "POST" })
+                .then(function (response) {
+                    console.log("running");
+                    console.log(response);
+        
+        
+                });
+        }
 
 
 
