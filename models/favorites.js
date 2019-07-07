@@ -24,6 +24,17 @@ var favorites = {
         };
         console.log("favorites ID: " + fav_id)
         orm.delete(query, callback)
+    },
+    
+    //Delete all favorites of a certain dog
+    deleteManyFavorites: function (dog_id, callback){
+        let query = {
+            table: 'favorites',
+            where: [{dog_id: dog_id}],
+            debug: true
+        };
+        console.log("Dogs Favorites to be delete: " + dog_id)
+        orm.delete(query, callback)
     }
  
 };

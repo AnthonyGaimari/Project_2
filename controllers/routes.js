@@ -38,6 +38,18 @@ router.post('/api/dogs', function (req, res) {
     })
 });
 
+router.put('/api/dogs/adopt', function (req, res) {
+    dog_id = req.body.dog_id
+
+    dog.adoptDog(dog_id, function (error, dog_data) {
+        if (error) {
+            res.json(error)
+        } else {
+            res.json(dog_data);
+        }
+    })
+});
+
 //=====USER ROUTES=========================================================
 
 router.post('/api/users', function (req, res) {
@@ -99,7 +111,7 @@ router.get("/api/user/favorites/:currUser_id", function (req, res) {
 });
 
 
-router.post('/api/favorites', function (req, res) {
+router.post('/api/favorite', function (req, res) {
 
     console.log(req.body)
     var new_favorite = req.body;
@@ -116,12 +128,28 @@ router.post('/api/favorites', function (req, res) {
 });
 
 
-router.delete('/api/favorites', function (req, res) {
+router.delete('/api/favorite', function (req, res) {
 
     var fav_to_delete = req.body.fav_id
     console.log("fav to delete: "+ fav_to_delete)
 
     favorites.deleteFavorite(fav_to_delete, function (error, favorite_data) {
+        if (error) {
+            res.json(error)
+        } else {
+            res.json(favorite_data);
+        }
+    })
+
+    
+});
+
+router.delete('/api/favorites', function (req, res) {
+
+    var fav_to_delete = req.body.dog_id
+    console.log("fav to delete: "+ fav_to_delete)
+
+    favorites.deleteManyFavorites(fav_to_delete, function (error, favorite_data) {
         if (error) {
             res.json(error)
         } else {
