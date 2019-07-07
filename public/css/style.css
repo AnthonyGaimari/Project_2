@@ -144,7 +144,22 @@ form {
   span.psw {
     padding-top: 16px;
   }
+
+  .col-auto {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    max-width: 31%;
+    }
   
+    /* Smartphones (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 360px) and (max-device-width : 640px) {
+  .col-auto {
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: auto;
+    max-width: 100%;
+    }
+  }
   /* Change styles for span and cancel button on extra small screens */
   @media screen and (max-width: 300px) {
     span.psw {
