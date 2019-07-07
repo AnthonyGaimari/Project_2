@@ -60,7 +60,7 @@ let orm = {
     },
 
     getUserFavorites: function(user_id, callback){
-        let queryString = "Select dogs.dog_id, dog_blurb, dog_img_url, dog_name, dog_age, dog_breed from dogs left join favorites on dogs.dog_id = favorites.dog_id where favorites.user_id = " + user_id
+        let queryString = "Select dogs.dog_id, favorites.fav_id, dog_blurb, dog_img_url, dog_name, dog_age, dog_breed from dogs left join favorites on dogs.dog_id = favorites.dog_id where favorites.user_id = " + user_id
         let statement = connection.query(queryString, function(error, result) {
             callback(error, result);
         });

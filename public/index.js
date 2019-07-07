@@ -49,7 +49,7 @@ $(document).ready(function () {
 
     })
 
-//==========ON CLICK FOR ALL FORM BUTTONS================================
+    //==========ON CLICK FOR ALL FORM BUTTONS================================
 
     $('#submit_dog').on('click', function (event) {
         event.stopImmediatePropagation()
@@ -95,8 +95,8 @@ $(document).ready(function () {
     });
 
 
-    $("body").on('click', '.add_favorite', function(){
-        console.log('Add Favorite: '+ $(this).val());
+    $("body").on('click', '.add_favorite', function () {
+        console.log('Add Favorite: ' + $(this).val());
         var new_favorite = {
             dog_id: $(this).val(),
             user_id: loggedInUser
@@ -105,12 +105,16 @@ $(document).ready(function () {
         addFavorite(new_favorite);
     });
 
-    // $('.add_favorite').on('click', function (event) {
-    //     event.stopImmediatePropagation()
-    //     event.preventDefault()
-    //     console.log('Add Favorite');
-    //     console.log($('.fav_button').val())
-    // });
+    $("body").on('click', '.remove_favorite', function () {
+        console.log('Remove Favorite: ' + $(this).val());
+        var fav_to_delete = {
+            fav_id: $(this).val(),
+        }
+        console.log(fav_to_delete)
+        deleteFavorite(fav_to_delete);
+    });
+
+
 });
 
 
@@ -123,7 +127,6 @@ $(document).ready(function () {
 
 function router(id) {
     if (id === 'login') {
-        // console.log('here')
         $('.navlist').addClass('hidden');
         $('.view-container').addClass('hidden');
         showLogin()
@@ -134,7 +137,7 @@ function router(id) {
         $('#allDogs-state-container').removeClass('hidden')
         $('.navlist').removeClass('hidden')
 
-        console.log(loggedInUser+" LOGGED IN")
+        console.log(loggedInUser + " LOGGED IN")
         showAllDogs();
 
     }
@@ -142,7 +145,7 @@ function router(id) {
         $('.view-container').addClass('hidden');
         $('#favorites-state-container').removeClass('hidden')
         showFavorties(loggedInUser)
-        }
+    }
 
     else if (id === 'submit_dog') {
         $('.view-container').addClass('hidden');
@@ -163,7 +166,6 @@ function showLogin() {
 
 
 function showAllDogs() {
-    // $('#content').empty();
     $('#allDogs').css('display', 'block')
 
     $("#allDogs-state-container").empty().prepend("<div class='row dog-card'></div>");
@@ -172,9 +174,9 @@ function showAllDogs() {
             console.log("running");
             console.log(response);
             for (var i = 0; i < response.length; i++) {
-                console.log(response[i].dog_id) 
+                console.log(response[i].dog_id)
                 console.log(response[i].dog_name)
-                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> <button type='button'  class='button add_favorite' value ="+response[i].dog_id+">Add Favorite</button> </div> </div> </div>");
+                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> <button type='button'  class='button add_favorite' value =" + response[i].dog_id + ">Add Favorite</button> </div> </div> </div>");
             }
 
         });
@@ -191,7 +193,6 @@ function submitDog(newDog) {
 
 
         });
-
 }
 
 
@@ -218,47 +219,57 @@ function userLogin(loginAttempt) {
                 console.log(response.currUser)
                 loggedInUser = response.currUser
                 router('allDogs')
-            } else{
+            } else {
                 console.log("wrong credentials")
 
             }
 
         });
-
-        // return loggedInUser;
 }
 
 
-function showFavorties(loggedInUser){
+function showFavorties(loggedInUser) {
     console.log("FROM SHOW FAVORITES FUNCTION: ")
     console.log(loggedInUser)
-    $.ajax({ url: "/api/user/favorites/" + loggedInUser,  method: "GET" })
+    $.ajax({ url: "/api/user/favorites/" + loggedInUser, method: "GET" })
         .then(function (response) {
             console.log("running");
             console.log(response);
-      
+
             $("#favorites-state-container").empty().prepend("<div class='row dog-card'></div>");
             for (var i = 0; i < response.length; i++) {
-                // console.log(response[i].dog_id)
-                // console.log(response[i].dog_name)
-                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> </div> </div> </div>");
+                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p><button type='button'  class='button remove_favorite' value =" + response[i].fav_id + ">Remove Favorite</button> </div> </div> </div>");
             }
 
 
-        });}
+        });
+}
 
 
-        function addFavorite(new_favorite) {
-            console.log("FROM ADD FAVORITE FUNCTION: ")
-            console.log(new_favorite)
-            $.ajax({ url: "/api/favorites/", data: new_favorite, method: "POST" })
-                .then(function (response) {
-                    console.log("running");
-                    console.log(response);
-        
-        
-                });
-        }
+function addFavorite(new_favorite) {
+    console.log("FROM ADD FAVORITE FUNCTION: ")
+    console.log(new_favorite)
+    $.ajax({ url: "/api/favorites/", data: new_favorite, method: "POST" })
+        .then(function (response) {
+            console.log("running");
+            console.log(response);
+
+
+        });
+}
+
+
+function deleteFavorite(fav_to_delete) {
+    console.log("FROM ADD DELETEFAVORITE FUNCTION: ")
+    console.log("DELETE ME: "+fav_to_delete.fav_id)
+    $.ajax({ url: "/api/favorites/", data: fav_to_delete, method: "DELETE" })
+        .then(function (response) {
+            console.log("running");
+            console.log(response);
+
+
+        });
+}
 
 
 
