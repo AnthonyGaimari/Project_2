@@ -266,6 +266,7 @@ function deleteFavorite(fav_to_delete) {
         .then(function (response) {
             console.log("running");
             console.log(response);
+            showFavorties(loggedInUser)
 
 
         });
