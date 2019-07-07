@@ -6,7 +6,6 @@ var router = express.Router();
 var dog = require('../models/dog');
 var user = require('../models/user');
 var favorites = require('../models/favorites');
-// var orm = require('../config/orm');
 
 //======DOG ROUTES=========================================================
 
@@ -42,11 +41,7 @@ router.post('/api/dogs', function (req, res) {
 //=====USER ROUTES=========================================================
 
 router.post('/api/users', function (req, res) {
-    // var newUser = {
-    //     //Place Holder User // to be deleted
-    //     username: "Nick",
-    //     user_email: "nick@gamblin.com"
-    // }
+
     console.log(req.body)
     var newUser = req.body;
 
@@ -105,11 +100,7 @@ router.get("/api/user/favorites/:currUser_id", function (req, res) {
 
 
 router.post('/api/favorites', function (req, res) {
-    // var newUser = {
-    //     //Place Holder User // to be deleted
-    //     username: "Nick",
-    //     user_email: "nick@gamblin.com"
-    // }
+
     console.log(req.body)
     var new_favorite = req.body;
 
@@ -120,6 +111,25 @@ router.post('/api/favorites', function (req, res) {
             res.json(favorite_data);
         }
     })
+
+    
+});
+
+
+router.delete('/api/favorites', function (req, res) {
+
+    var fav_to_delete = req.body.fav_id
+    console.log("fav to delete: "+ fav_to_delete)
+
+    favorites.deleteFavorite(fav_to_delete, function (error, favorite_data) {
+        if (error) {
+            res.json(error)
+        } else {
+            res.json(favorite_data);
+        }
+    })
+
+    
 });
 
 
