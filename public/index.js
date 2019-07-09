@@ -121,18 +121,19 @@ $(document).ready(function () {
         console.log(dog_id)
         console.log(page_state+" PAGE STATE?")
         adoptDog(dog_id);
+
+        var fav_to_delete ={
+            dog_id: $(this).val()
+        }
+        deleteManyFavorites(fav_to_delete)
         if (page_state == 'allDogs'){
             showAllDogs();
         } else if(page_state == 'showFavorites'){
             console.log("NOT IN ALL DOGS PAGE STATE")
-            var fav_to_delete ={
-                dog_id: $(this).val()
-            }
-            deleteManyFavorites(fav_to_delete)
+            showFavorites(loggedInUser)
         }
 
     });
-
 
 });
 
