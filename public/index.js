@@ -1,5 +1,5 @@
 var loggedInUser;
-var page_state= "";
+var page_state = "";
 
 $(document).ready(function () {
 
@@ -56,7 +56,7 @@ $(document).ready(function () {
         event.stopImmediatePropagation()
         event.preventDefault()
         console.log('submit dog');
-
+       
         var newDog = {
             dog_name: $('#dog_name').val(),
             dog_breed: $('#dog_breed').val(),
@@ -66,6 +66,7 @@ $(document).ready(function () {
         }
         console.log(newDog)
         submitDog(newDog);
+        alert("Thank you for your submission");
     });
 
     $('#signup_button').on('click', function (event) {
@@ -104,6 +105,7 @@ $(document).ready(function () {
         }
         console.log(new_favorite)
         addFavorite(new_favorite);
+        alert("your favorite has been added");
     });
 
     $("body").on('click', '.remove_favorite', function () {
@@ -119,13 +121,13 @@ $(document).ready(function () {
         console.log('Adopt Dog: ' + $(this).val());
         var dog_id = $(this).val();
         console.log(dog_id)
-        console.log(page_state+" PAGE STATE?")
+        console.log(page_state + " PAGE STATE?")
         adoptDog(dog_id);
-        if (page_state == 'allDogs'){
+        if (page_state == 'allDogs') {
             showAllDogs();
-        } else if(page_state == 'showFavorites'){
+        } else if (page_state == 'showFavorites') {
             console.log("NOT IN ALL DOGS PAGE STATE")
-            var fav_to_delete ={
+            var fav_to_delete = {
                 dog_id: $(this).val()
             }
             deleteManyFavorites(fav_to_delete)
@@ -218,24 +220,24 @@ function submitDog(newDog) {
 }
 
 function adoptDog(dog_id) {
-    console.log("FROM ADOPTDOG FUNCTION: "+ dog_id)
-    adoptUpdate ={
+    console.log("FROM ADOPTDOG FUNCTION: " + dog_id)
+    adoptUpdate = {
         dog_id: dog_id,
     }
-    
+
     $.ajax({ url: "/api/dogs/adopt", data: adoptUpdate, method: "PUT" })
         .then(function (response) {
             console.log("running");
             console.log(response);
             console.log(response.changedRows)
-            if (response.changedRows >= 1){
+            if (response.changedRows >= 1) {
                 console.log("DOG WAS ADOPTED")
 
                 deleteManyFavorites(fav_to_delete)
-            } else{
+            } else {
                 console.log("DOG WAS ALREADY ADOPTED")
             }
-  
+
 
         });
 }
@@ -306,7 +308,7 @@ function showFavorites(loggedInUser) {
 
 
 function addFavorite(new_favorite) {
-    console.log("FROM ADD FAVORITE FUNCTION: ")
+    console.log("FROM ADD FAV O RITE FUNCTION: ")
     console.log(new_favorite)
     $.ajax({ url: "/api/favorite/", data: new_favorite, method: "POST" })
         .then(function (response) {
@@ -319,7 +321,7 @@ function addFavorite(new_favorite) {
 
 
 function deleteFavorite(fav_to_delete) {
-    console.log("FROM DELETEFAVORITE FUNCTION: ")
+    console.log("FROM DELETEF A VORITE FUNCTION: ")
     console.log("DELETE ME: "+fav_to_delete.fav_id)
     $.ajax({ url: "/api/favorite/", data: fav_to_delete, method: "DELETE" })
         .then(function (response) {
