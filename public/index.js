@@ -248,6 +248,20 @@ function signUp(newUser) {
         .then(function (response) {
             console.log("running");
             console.log(response);
+            console.log(response.insertId)
+            if (response.insertId){
+                console.log("INSERTED")
+
+                var loginAttempt = {
+                    username: newUser.username,
+                    password: newUser.password
+                }
+                console.log(loginAttempt)
+                userLogin(loginAttempt);
+            
+            } else {
+                console.log("NOT INSERTED")
+            }
 
 
         });
