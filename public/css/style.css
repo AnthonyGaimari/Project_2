@@ -53,14 +53,15 @@ hr {
 
 /* Set a style for all buttons */
 button {
-  background-color: #4CAF50;
-  color: white;
-  /* padding: 14px 20px; */
-  margin-right: 10px;
-  border: none;
-  cursor: pointer;
-  /* width: 50%; */
-  opacity: 0.9;
+    background-color: #4CAF50;
+    color: white;
+    /* padding: 14px 20px; */
+    margin-right: 4px;
+    margin-top: 10px;
+    border: none;
+    cursor: pointer;
+    /* width: 50%; */
+    opacity: 0.9;
 }
 
 
@@ -147,8 +148,8 @@ form {
   .col-auto {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    max-width: 31%;
-    min-width: 31%;
+    max-width: 35%;
+    min-width: 35%;
     max-height: 50%;
     }
   
