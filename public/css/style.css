@@ -148,9 +148,8 @@ form {
   .col-auto {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
-    max-width: 35%;
-    min-width: 35%;
-    max-height: 50%;
+    max-width: 31%;
+    min-width: 31%;  
     }
   
     /* Smartphones (portrait and landscape) ----------- */

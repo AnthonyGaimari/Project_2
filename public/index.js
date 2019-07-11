@@ -221,7 +221,7 @@ function showAllDogs() {
             console.log("running");
             console.log(response);
             for (var i = 0; i < response.length; i++) {
-                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> <button type='button'  class='button adopt_me' value =" + response[i].dog_id + ">Adopt Me!</button> <button type='button' class='button add_favorite' value =" + response[i].dog_id + ">Add Favorite</button>" + "<button type='button' class='button remove_entry' value =" + response[i].dog_id + ">Remove Entry</button>" + " </div> </div> </div>");
+                $(".dog-card").append("<div class='col-auto mt-3 mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> <button type='button'  class='button adopt_me' value =" + response[i].dog_id + ">Adopt Me!</button> <button type='button' class='button add_favorite' value =" + response[i].dog_id + ">Add Favorite</button>" + "<button type='button' class='button remove_entry' value =" + response[i].dog_id + ">Remove Entry</button>" + " </div> </div> </div>");
             }
 
         });
