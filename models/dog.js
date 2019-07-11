@@ -35,6 +35,15 @@ var dog = {
 
         };
         orm.update(query, callback);
+    },
+    deleteDog: function (dog_id, callback){
+        let query = {
+            table: 'dogs',
+            where: [{dog_id: dog_id}],
+            debug: true
+
+        };
+        orm.delete(query, callback);
     }
 };
 

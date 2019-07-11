@@ -50,6 +50,24 @@ router.put('/api/dogs/adopt', function (req, res) {
     })
 });
 
+//Remove dog route
+
+router.post('/api/delete', function (req, res) {
+
+    var listingDelete = req.body.dog_id
+    console.log("fav to delete: ", listingDelete)
+
+    dog.deleteDog(listingDelete, function (error, favorite_data) {
+        if (error) {
+            res.json(error)
+        } else {
+            res.json(favorite_data);
+        }
+    })
+
+    
+});
+
 //=====USER ROUTES=========================================================
 
 router.post('/api/users', function (req, res) {

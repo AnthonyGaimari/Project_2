@@ -7,7 +7,6 @@ body {
 
 
 .view-container{
-
   display: block;
 }
 
@@ -149,6 +148,8 @@ form {
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;
     max-width: 31%;
+    min-width: 31%;
+    max-height: 50%;
     }
   
     /* Smartphones (portrait and landscape) ----------- */

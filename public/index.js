@@ -104,6 +104,28 @@ $(document).ready(function () {
         }
         console.log(new_favorite)
         addFavorite(new_favorite);
+        alert("glad you like this dog click on favorites in NavBar");
+    });
+
+    $("body").on('click', '.remove_entry', function () {
+        console.log('Add Favorite: ' + $(this).val());
+        var removed = {
+            dog_id: $(this).val(),
+        }
+
+        console.log(removed)
+        // "/api/favorite/"
+    $.ajax({ url: "/api/delete/", data: removed, method: "POST" })
+        .then(function (response) {
+            console.log("running");
+            console.log(response);
+            location.reload();
+            console.log(location);
+            console.log(window);
+
+
+        });
+        
     });
 
     $("body").on('click', '.remove_favorite', function () {
@@ -199,7 +221,7 @@ function showAllDogs() {
             console.log("running");
             console.log(response);
             for (var i = 0; i < response.length; i++) {
-                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> <button type='button'  class='button adopt_me' value =" + response[i].dog_id + ">Adopt Me!</button> <button type='button' class='button add_favorite' value =" + response[i].dog_id + ">Add Favorite</button> </div> </div> </div>");
+                $(".dog-card").append("<div class='col-auto mb-3 mr-3'><div class='card' width: 25rem;'> <img src=" + response[i].dog_img_url + " class='card-img-top'> <div class='card-body'> <h5 class='card-title'>" + response[i].dog_name + "</h5> <p class='card-text'>" + response[i].dog_blurb + "</p> <button type='button'  class='button adopt_me' value =" + response[i].dog_id + ">Adopt Me!</button> <button type='button' class='button add_favorite' value =" + response[i].dog_id + ">Add Favorite</button>" + "<button type='button' class='button remove_entry' value =" + response[i].dog_id + ">Remove Entry</button>" + " </div> </div> </div>");
             }
 
         });
