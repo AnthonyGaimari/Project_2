@@ -134,6 +134,21 @@ form {
     width: 40%;
     border-radius: 50%;
   }
+
+
+.card-img-top {
+  width: 100%;
+  border-top-left-radius: calc(.25rem - 1px);
+  border-top-right-radius: calc(.25rem - 1px);
+  height: 200px!important;
+  object-fit: cover;
+}
+/* 
+  .card-img{
+    width: 100%!important;
+    height: 200px!important;
+    object-fit: cover;
+ } */
   
   /* Add padding to containers */
   .container {
