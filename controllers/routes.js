@@ -62,6 +62,7 @@ router.post('/api/delete', function (req, res) {
             res.json(error)
         } else {
             res.json(favorite_data);
+            //DELETE FROM table_name [WHERE condition];
         }
     })
 
