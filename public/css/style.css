@@ -140,7 +140,7 @@ form {
   width: 100%;
   border-top-left-radius: calc(.25rem - 1px);
   border-top-right-radius: calc(.25rem - 1px);
-  height: 200px!important;
+  height: 350px!important;
   object-fit: cover;
 }
 /* 
@@ -175,7 +175,17 @@ form {
     width: auto;
     max-width: 100%;
     }
+
+    
+  .card-img-top {
+    width: 100%;
+    border-top-left-radius: calc(.25rem - 1px);
+    border-top-right-radius: calc(.25rem - 1px);
+    height: 200px!important;
+    object-fit: cover;
+   }
   }
+
   /* Change styles for span and cancel button on extra small screens */
   @media screen and (max-width: 300px) {
     span.psw {
