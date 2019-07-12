@@ -105,7 +105,7 @@ $(document).ready(function () {
         }
         console.log(new_favorite)
         addFavorite(new_favorite);
-        alert("Glad you like this dog click on favorites in NavBar");
+        alert('Glad you like this dog click on "Favorites" in NavBar');
     });
 
     $("body").on('click', '.remove_entry', function () {
