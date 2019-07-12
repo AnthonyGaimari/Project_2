@@ -66,7 +66,7 @@ $(document).ready(function () {
         }
         console.log(newDog)
         submitDog(newDog);
-        alert("Thank you for your submission come back soon!");
+        alert("Thank you for your submission come back soon!/n go view dogs on NavBar");
     });
 
     $('#signup_button').on('click', function (event) {
