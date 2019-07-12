@@ -66,6 +66,7 @@ $(document).ready(function () {
         }
         console.log(newDog)
         submitDog(newDog);
+        alert("Thank you for your submission come back soon!");
     });
 
     $('#signup_button').on('click', function (event) {
@@ -104,7 +105,7 @@ $(document).ready(function () {
         }
         console.log(new_favorite)
         addFavorite(new_favorite);
-        alert("glad you like this dog click on favorites in NavBar");
+        alert("Glad you like this dog click on favorites in NavBar");
     });
 
     $("body").on('click', '.remove_entry', function () {
