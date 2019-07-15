@@ -65,7 +65,7 @@ $(document).ready(function () {
             dog_blurb: $('#dog_blurb').val()
         }
 
-        //Empty submit dog fields
+ //Empty submit dog fields
         $('#dog_name').val("");
         $('#dog_breed').val("");
         $('#dog_age').val("");
