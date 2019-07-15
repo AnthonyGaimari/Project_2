@@ -1,7 +1,7 @@
 var mysql = require("mysql");
 var config = require("../config.js");
 
-console.log(config.mysql.url);
+//console.log(config.mysql.url);
 
 var connection = mysql.createConnection(config.mysql.url); 
 

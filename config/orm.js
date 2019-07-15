@@ -44,6 +44,7 @@ let orm = {
             console.log(statement.sql);
         }
     },
+    //controller delete entries
     delete: function(query, callback) {
         let queryString = "DELETE FROM ?? WHERE ?";
         let statement = connection.query(queryString, [query.table, query.where[0]], function(error, result) {

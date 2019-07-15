@@ -64,6 +64,14 @@ $(document).ready(function () {
             dog_img_url: $('#dog_img_url').val(),
             dog_blurb: $('#dog_blurb').val()
         }
+
+        //Empty submit dog fields
+        $('#dog_name').val("");
+        $('#dog_breed').val("");
+        $('#dog_age').val("");
+        $('#dog_img_url').val("");
+        $('#dog_blurb').val("");
+
         console.log(newDog)
         submitDog(newDog);
         alert('Thank you for your submission come back soon! Go to "View Dogs" on NavBar');
